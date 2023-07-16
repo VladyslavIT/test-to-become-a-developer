@@ -34,6 +34,6 @@ export const ModalTitle = styled.p`
 `;
 
 export const Letter = styled.div`
-  font-size: xxx-large;
-  font-style: italic;
+  font-size: 60px;
+  font-style: normal;
 `;

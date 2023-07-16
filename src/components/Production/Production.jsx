@@ -15,12 +15,31 @@ const Production = () => {
   const [text, setText] = useState('');
   const [letter, setLetter] = useState([]);
 
+  const uniqueLetter = array => {
+    const counts = {};
+
+    for (const item of array) {
+      counts[item] = (counts[item] || 0) + 1;
+    }
+    for (const item of array) {
+      if (counts[item] === 1) {
+        return item;
+      }
+    }
+    return 'no unique letter';
+  };
+
   useEffect(() => {
-    const findUniqueLetter = () => {
-      const arr = text.toLowerCase().split(/\s+/);
+    const uniqueArray = () => {
+      const array = text.toLowerCase().split(/\s+/);
+      const setArray = new Set();
       const uniqueLetters = [];
 
-      for (const item of arr) {
+      array.forEach(word => {
+        setArray.add(word);
+      });
+
+      for (const item of setArray) {
         let uniqueChar = item[0];
         let isDuplicate = false;
 
@@ -36,10 +55,8 @@ const Production = () => {
       }
       return uniqueLetters;
     };
-    setLetter(findUniqueLetter());
+    setLetter(uniqueLetter(uniqueArray()));
   }, [text]);
-
-  console.log(letter);
 
   const handleChange = ({ target: { value } }) => {
     setText(value);
@@ -56,7 +73,7 @@ const Production = () => {
     <>
       <Section>
         <Title>LetterTracker</Title>
-        <Modal isOpen={isOpen} onClose={closeModal} />
+        <Modal letter={letter} isOpen={isOpen} onClose={closeModal} />
         <SubTitle>Enter text here</SubTitle>
         <TextArea onChange={handleChange}></TextArea>
 

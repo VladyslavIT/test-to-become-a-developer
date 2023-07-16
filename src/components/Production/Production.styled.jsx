@@ -1,6 +1,7 @@
 import styled, { keyframes } from 'styled-components';
 
 export const Section = styled.section`
+  width: 700px;
   padding: 100px 0 100px 0;
   text-align: center;
 `;
@@ -28,7 +29,7 @@ const pulsate = keyframes`
 export const TextArea = styled.textarea`
   width: 100%;
   height: 300px;
-  margin-bottom: 56px;
+  margin-bottom: 24px;
   box-sizing: border-box;
   font-size: large;
   font-family: system-ui;

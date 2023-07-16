@@ -9,7 +9,7 @@ import {
   Letter,
 } from './Modal.styled';
 
-const Modal = ({ isOpen, onClose }) => {
+const Modal = ({ letter, isOpen, onClose }) => {
   useEffect(() => {
     const handleEscape = event => {
       if (event.key === 'Escape') {
@@ -40,7 +40,7 @@ const Modal = ({ isOpen, onClose }) => {
           <SlClose style={{ fontSize: '30px' }} />
         </ModalClose>
         <ModalTitle>The Letter :</ModalTitle>
-        <Letter>a</Letter>
+        <Letter>{!letter ? 'no unique letter' : letter}</Letter>
       </ModalContent>
     </ModalWrapper>
   );
